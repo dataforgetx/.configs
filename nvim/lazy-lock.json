@@ -24,6 +24,7 @@
   "mini.icons": { "branch": "main", "commit": "94848dad1589a199f876539bd79befb0c5e3abf0" },
   "neogit": { "branch": "master", "commit": "ca19dbaef043a6a3943ee8f2c0f17c4736e6b7c9" },
   "neoscroll.nvim": { "branch": "master", "commit": "f957373912e88579e26fdaea4735450ff2ef5c9c" },
+  "nightfly": { "branch": "master", "commit": "8c55003e89f321a48a8cd4bb426dd3e7c58f0646" },
   "nvim-autopairs": { "branch": "master", "commit": "4d74e75913832866aa7de35e4202463ddf6efd1b" },
   "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
@@ -57,5 +58,6 @@
   "vim-tmux-navigator": { "branch": "master", "commit": "96da8e10ce83b754f442c3e25d1bf74451d220f2" },
   "volt": { "branch": "main", "commit": "c45d5f48da8e802e608b5c6da471ca4d84276dfb" },
   "vscode-lldb": { "branch": "master", "commit": "bc1fee16be7451cb0a4fe63dfad5476a1cd11d66" },
-  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
+  "yazi.nvim": { "branch": "main", "commit": "5127a4425ddc1f01c355de4dcc85f9a336c26d7f" }
 }

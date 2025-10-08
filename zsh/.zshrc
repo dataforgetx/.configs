@@ -65,12 +65,12 @@ export EDITOR="nvim"
 eval "$(fzf --zsh)"
 
 # --- setup fzf theme ---
-fg="#dee2e8"
-bg="#272c33"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#83a5d6"
-cyan="#83beb1"
+fg="#c3ccdc"
+bg="#011627"
+bg_highlight="#1d3b53"
+purple="#c792ea"
+blue="#82aaff"
+cyan="#7fdbca"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
