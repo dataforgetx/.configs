@@ -22,7 +22,7 @@ return { -- Autoformat
       rust = { "rustfmt" },
       sql = { "sqlfmt" },
       sh = { "shfmt" },
-      go = { "gofmt" },
+      go = { "goimports", "gofmt" },
       zig = { "zigfmt" },
       c = { "clang_format" },
       cpp = { "clang_format" },

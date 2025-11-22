@@ -1,12 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    -- Automatically install LSPs and related tools to stdpath for neovim
     "williamboman/mason.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
-    -- First, set up mason with explicit configuration
     require("mason").setup({
       ui = {
         border = "rounded",
@@ -26,10 +24,8 @@ return {
       { name = "DiagnosticSignHint", text = "➤" },
     }
 
-    -- Create a signs table for vim.diagnostic.config
     local sign_icons = {}
     for _, sign in ipairs(signs) do
-      -- Extract the severity from the sign name (assuming names like "DiagnosticSignError")
       local severity_name = sign.name:match("DiagnosticSign(.+)")
       if severity_name then
         local severity = vim.diagnostic.severity[severity_name:upper()]
@@ -39,21 +35,149 @@ return {
       end
     end
 
-    -- Configure diagnostics with the new API
     vim.diagnostic.config({
       signs = {
         text = sign_icons,
       },
     })
 
-    -- Define capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     -- LSP server configurations
     local servers = {
-      clangd = {},
-      rust_analyzer = {},
+      html = {},
+      cssls = {},
+      jsonls = {},
+
+      -- clang
+      clangd = {
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+        },
+        capabilities = capabilities,
+      },
+
+      -- rust
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              runBuildScripts = true,
+            },
+            checkOnSave = {
+              command = "clippy",
+            },
+            procMacro = {
+              enable = true,
+            },
+            inlayHints = {
+              chainingHints = { enable = true },
+              parameterHints = { enable = true },
+              typeHints = { enable = true },
+            },
+          },
+        },
+      },
+
+      -- python
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = "workspace",
+            },
+          },
+        },
+      },
+
+      -- typescript/javascript
+      ts_ls = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
+      },
+
+      -- go
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+              shadow = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      },
+
+      -- bash
+      bashls = {
+        settings = {
+          bashIde = {
+            globPattern = "*@(.sh|.inc|.bash|.command)",
+          },
+        },
+        filetypes = { "sh", "bash" },
+      },
+
+      -- zig
+      zls = {
+        settings = {
+          zls = {
+            enable_autofix = true,
+            enable_snippets = true,
+            enable_build_on_save = true,
+            enable_inlay_hints = true,
+            inlay_hints_show_builtin = true,
+            inlay_hints_exclude_single_argument = false,
+            warn_style = true,
+            highlight_global_var_declarations = true,
+          },
+        },
+      },
+
+      -- lua
       lua_ls = {
         settings = {
           Lua = {
@@ -77,10 +201,9 @@ return {
       },
     }
 
-    -- Tool installation with correct package names
     local ensure_installed = {
       "clangd",
-      "rust-analyzer", -- Corrected package name
+      "rust-analyzer",
       "lua-language-server",
       "stylua",
       "eslint-lsp",
@@ -97,16 +220,17 @@ return {
       "zls",
       "solargraph",
       "pyright",
+      "gopls",
+      "bash-language-server",
     }
 
-    -- Set up mason-tool-installer
     require("mason-tool-installer").setup({
       ensure_installed = ensure_installed,
       auto_update = false,
       run_on_start = true,
     })
 
-    -- Set up LSP servers manually
+    -- Set up LSP servers
     local lspconfig = require("lspconfig")
     for server_name, server_opts in pairs(servers) do
       local opts = vim.tbl_deep_extend("force", {
@@ -116,16 +240,15 @@ return {
       lspconfig[server_name].setup(opts)
     end
 
-    -- Set up LSP keymappings and other features
+    -- LSP keymappings on attach
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
-        -- Helper function for keymappings
         local map = function(keys, func, desc)
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        -- LSP keymappings
+        -- Navigation
         map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
         map("gD", vim.lsp.buf.declaration, "Goto Declaration")
         map("gr", require("telescope.builtin").lsp_references, "Goto References")
@@ -133,12 +256,26 @@ return {
         map("<leader>td", require("telescope.builtin").lsp_type_definitions, "Type Definition")
         map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
         map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+
+        -- Refactoring
         map("<leader>rn", vim.lsp.buf.rename, "Rename")
         map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+
+        -- signature help
+        map("<C-k>", vim.lsp.buf.signature_help, "Signature Help")
+
+        -- Documentation
         map("K", vim.lsp.buf.hover, "Hover Documentation")
 
-        -- Document highlight
+        -- Formatting (if server supports it)
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client.server_capabilities.documentFormattingProvider then
+          map("<leader>f", function()
+            vim.lsp.buf.format({ async = true })
+          end, "Format Document")
+        end
+
+        -- Document highlight
         if client and client.server_capabilities.documentHighlightProvider then
           vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             buffer = event.buf,

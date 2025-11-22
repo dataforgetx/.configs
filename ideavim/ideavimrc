@@ -14,7 +14,7 @@ nnoremap U <C-r>
 " map black whole register to \
 nnoremap \ "_
 
-nnoremap / /\v
+nnoremap ;; :action SaveAll<CR>
 
 " sync Vim clipboard with OS clipboard (to use cmd+v/c in vim)
 set clipboard^=unnamed,unnamedplus

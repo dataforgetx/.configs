@@ -3,7 +3,8 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "nightfly",
+        -- theme = "nightfly",
+        theme = "ghostty-default-style-dark",
         globalstatus = true, --single status line at bottom instead of per-window
       },
     })
