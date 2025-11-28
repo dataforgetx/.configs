@@ -1,26 +1,22 @@
 return {
-  -- "bluz71/vim-nightfly-colors",
-  -- name = "nightfly",
-  -- priority = 1000,
-  -- config = function()
-  --   vim.g.nightflyItalics = false
-  --   vim.g.nightflyTransparent = true
-  --   vim.cmd("colorscheme nightfly")
-  -- end,
-
-  "nkxxll/ghostty-default-style-dark.nvim",
+  "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require("ghostty-default-style-dark").setup({
-      transparent = false,
-      terminal_colors = true,
+    require("tokyonight").setup({
       styles = {
         comments = { italic = false },
         keywords = { italic = false },
+        functions = {},
+        variables = {},
       },
-      dim_inactive = true,
+      dim_inactive = false,
+      on_highlights = function(hl, c)
+        hl["@function"] = { fg = c.blue }
+        hl["@function.call"] = { fg = c.blue }
+        hl.Function = { fg = c.blue }
+      end,
     })
-    vim.cmd.colorscheme("ghostty-default-style-dark")
+    vim.cmd("colorscheme tokyonight-moon")
   end,
 }

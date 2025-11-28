@@ -4,7 +4,7 @@ return {
     require("lualine").setup({
       options = {
         -- theme = "nightfly",
-        theme = "ghostty-default-style-dark",
+        theme = "tokyonight",
         globalstatus = true, --single status line at bottom instead of per-window
       },
     })
