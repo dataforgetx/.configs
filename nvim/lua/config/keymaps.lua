@@ -185,7 +185,7 @@ vim.keymap.set(
 
 -- diffview
 vim.keymap.set("n", "<leader>df", "<cmd>DiffviewOpen<CR>", { desc = "Open Diff View", silent = true })
-vim.keymap.set("n", "<leader>dF", "<cmd>DiffviewClose<CR>", { desc = "Close Diff View", silent = true })
+vim.keymap.set("n", "<leader>cd", "<cmd>DiffviewClose<CR>", { desc = "Close Diff View", silent = true })
 
 -- debugging
 vim.keymap.set("n", "<leader>dc", function()
