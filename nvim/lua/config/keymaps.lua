@@ -47,8 +47,20 @@ vim.keymap.set("n", "<leader>lcd", ":lcd %:h<CR>", { desc = "cd to current file 
 -- Delete line to blackhole register
 vim.keymap.set("n", "\\dd", '"_dd', { desc = "Delete line to blackhole" })
 
--- map gb to switch between current and prev buffers
+--  switch between current and prev buffers
 vim.keymap.set("n", "<leader>bb", "<C-^>", { desc = "Switch between current and previous buffer" })
+
+local function close_other_buffers()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= current and vim.bo[buf].buflisted then
+      vim.api.nvim_buf_delete(buf, { force = false })
+    end
+  end
+end
+
+-- <leader>bo to close all other buffers
+vim.keymap.set("n", "<leader>bo", close_other_buffers, { desc = "Close other buffers" })
 
 -- toggle show keypress on screen
 vim.keymap.set("n", "<leader>ts", ":ShowkeysToggle<CR>", { desc = "Toggle Showkeys", silent = true })

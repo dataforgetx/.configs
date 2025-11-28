@@ -15,6 +15,11 @@ return {
           cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
           desc = "toggle current item",
         },
+        ["run_replace"] = {
+          map = "<leader>ra",
+          cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+          desc = "replace all",
+        },
       },
     })
   end,
