@@ -1,6 +1,6 @@
-theme = "catppuccin-macchiato"
-background-opacity = 0.95
-background-blur = 10
+theme = "tokyonight_moon"
+# background-opacity = 0.95
+# background-blur = 10
 font-family = "JetBrainsMono Nerd Font Mono"
 # font-family = "NotoSansM Nerd Font Mono"
 font-feature =+feat

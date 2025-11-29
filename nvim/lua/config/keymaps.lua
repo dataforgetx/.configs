@@ -71,10 +71,6 @@ vim.keymap.set("n", "<leader>tt", ":TimerlyToggle<CR>", { desc = "Toggle Timerly
 vim.keymap.set("n", "x", '"_x', { noremap = true, desc = "Delete character (black hole register)" })
 vim.keymap.set("v", "x", '"_x', { noremap = true, desc = "Delete selection (black hole register)" })
 
--- in visual mode, move selected lines up and down using K,J
--- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
--- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 -- when joining lines, keep cursor in place
 vim.keymap.set("n", "J", "mzJ`z")
 
@@ -127,10 +123,6 @@ vim.keymap.set("n", "<leader>hs", "<C-w>s", { desc = "Horizontal Split", silent 
 vim.keymap.set("n", "<leader>es", "<C-w>=", { desc = "Equal Split", silent = true }) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>as", "<C-w>o", { desc = "Keep the active window", silent = true })
 vim.keymap.set("n", "<leader>cs", "<cmd>close<CR>", { desc = "Close Split", silent = true }) -- close current split window
-
--- Remap keys for better tab management
--- vim.keymap.set("n", "<tab>", "<cmd>tabn<CR>", { desc = "Go to next tab", silent = true }) --  go to next tab
--- vim.keymap.set("n", "<s-tab>", "<cmd>tabp<CR>", { desc = "Go to previous tab", silent = true }) --  go to previous tab
 
 -- Exit terminal mode in the '<cmd>Telescope terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
