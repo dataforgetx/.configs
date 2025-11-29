@@ -121,10 +121,6 @@ vim.keymap.set("o", "ae", ":<C-u>normal! ggVG<CR>", { desc = "Entire buffer", si
 vim.keymap.set("x", "gG", ":<C-u>normal! ggVG<CR>", { desc = "Entire buffer", silent = true })
 vim.keymap.set("x", "gG", ":<C-u>normal! ggVG<CR>", { desc = "Entire buffer", silent = true })
 
--- -- Diagnostic keymaps
--- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
--- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-
 -- Remap keys for better Window management
 vim.keymap.set("n", "<leader>vs", "<C-w>v", { desc = "Vertical Split", silent = true }) -- split window vertically
 vim.keymap.set("n", "<leader>hs", "<C-w>s", { desc = "Horizontal Split", silent = true }) -- split window horizontally

@@ -105,7 +105,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
           },
         },
       },
-      -- pickers = {}
+      pickers = {
+        diagnostics = {
+          trim_text = false,
+          previewer = true,
+          layout_config = {
+            width = 0.9,
+            height = 0.9,
+            preview_width = 0.3,
+          },
+        },
+      },
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
