@@ -60,7 +60,6 @@ return {
         },
       },
       color_overrides = {},
-      custom_highlights = {},
       default_integrations = true,
       auto_integrations = false,
       integrations = {
@@ -78,5 +77,15 @@ return {
 
     -- setup must be called before loading
     vim.cmd.colorscheme("catppuccin")
+
+    -- markdown code block background
+    vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", {
+      bg = "#45475a", -- Catppuccin mocha surface0
+      fg = "#cdd6f4", -- Catppuccin mocha text
+    })
+    vim.api.nvim_set_hl(0, "@markup.raw.block", {
+      bg = "#45475a",
+      fg = "#cdd6f4",
+    })
   end,
 }
