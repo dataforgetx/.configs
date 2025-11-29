@@ -41,8 +41,8 @@ vim.keymap.set("v", "\\c", '"_c', { desc = "Change selection to blackhole" })
 vim.keymap.set("n", "\\C", '"_C', { desc = "Change to end of line to blackhole" })
 
 -- cd to the directory containing the file in the buffer, both local and global flavors
-vim.keymap.set("n", "<leader>cd", ":cd %:h<CR>", { desc = "cd to current file directory", silent = true })
-vim.keymap.set("n", "<leader>lcd", ":lcd %:h<CR>", { desc = "cd to current file directory locally", silent = true })
+vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>", { desc = "cd to current file directory" })
+vim.keymap.set("n", "<leader>lcd", ":lcd %:p:h<CR>:pwd<CR>", { desc = "cd to current file directory locally" })
 
 -- Delete line to blackhole register
 vim.keymap.set("n", "\\dd", '"_dd', { desc = "Delete line to blackhole" })
