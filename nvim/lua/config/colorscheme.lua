@@ -1,22 +1,32 @@
 return {
-  "folke/tokyonight.nvim",
+  "catppuccin/nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require("tokyonight").setup({
-      styles = {
-        comments = { italic = false },
-        keywords = { italic = false },
-        functions = {},
-        variables = {},
+    require("catppuccin").setup({
+      flavor = "macchiato",
+      transparent_background = true,
+      no_italic = true,
+      no_bold = true,
+      no_underline = true,
+      styles = {},
+      auto_integrations = true,
+      integrations = {
+        cmp = true,
+        gitsigns = true,
       },
-      dim_inactive = false,
-      on_highlights = function(hl, c)
-        hl["@function"] = { fg = c.blue }
-        hl["@function.call"] = { fg = c.blue }
-        hl.Function = { fg = c.blue }
-      end,
     })
-    vim.cmd("colorscheme tokyonight-moon")
+
+    -- setup must be called before loading
+    vim.cmd.colorscheme("catppuccin")
+    vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", {
+      bg = "#45475a",
+      fg = "#cdd6f4",
+    })
+
+    vim.api.nvim_set_hl(0, "@markup.raw.block", {
+      bg = "#45475a",
+      fg = "#cdd6f4",
+    })
   end,
 }

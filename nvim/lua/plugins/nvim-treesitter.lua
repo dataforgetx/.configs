@@ -63,6 +63,12 @@ return { -- Highlight, edit, and navigate code
             ["ac"] = "@class.outer",
             ["ic"] = { query = "@class.inner", desc = "select inner part of a class region" },
             ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+            ["ai"] = "@conditional.outer",
+            ["ii"] = "@conditional.inner",
+            ["al"] = "@loop.outer",
+            ["il"] = "@loop.inner",
+            ["a/"] = "@comment.outer",
+            ["i/"] = "@comment.inner",
           },
 
           selection_modes = {
@@ -77,23 +83,16 @@ return { -- Highlight, edit, and navigate code
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
-            ["]m"] = "@function.outer",
-            ["]]"] = { query = "@class.outer", desc = "Next class start" },
-            ["]o"] = { query = { "@loop.inner", "@loop.outer" } },
+            ["]f"] = "@function.outer",
+            ["]c"] = { query = "@class.outer", desc = "Next class start" },
+            ["]l"] = { query = { "@loop.inner", "@loop.outer" } },
             ["]s"] = { query = "@scope", query_group = "locals", desc = "next scope" },
             ["]z"] = { query = "@fold", query_group = "folds", desc = "next fold" },
           },
-          goto_next_end = {
-            ["]M"] = "@function.outer",
-            ["]["] = "@classouter",
-          },
           goto_previous_start = {
-            ["[m"] = "@function.outer",
-            ["[]"] = "@class.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@function.outer",
-            ["[]"] = "class.outer",
+            ["[f"] = "@function.outer",
+            ["[c"] = "@class.outer",
+            ["[l"] = { query = { "@loop.inner", "@loop.outer" } },
           },
         },
       },

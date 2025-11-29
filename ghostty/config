@@ -1,53 +1,20 @@
-theme = "tokyonight_moon"
+theme = "catppuccin-macchiato"
 # background-opacity = 0.95
 # background-blur = 10
 font-family = "JetBrainsMono Nerd Font Mono"
+# font-family = "NotoSansM Nerd Font Mono"
 font-feature =+feat
 font-size = 13
 title = "~"
 window-height = 62
 window-width = 136
+
 # window-titlebar-background = #2E3244
 # macos-titlebar-style = "transparent"
-# Nightfly theme
-# background = 011627
-# foreground = c3ccdc
-
-# Black
-# palette = 0=#1d3b53
-# palette = 8=#7c8f8f
-
-# Red
-# palette = 1=#fc514e
-# palette = 9=#ff5874
-
-# Green
-# palette = 2=#a1cd5e
-# palette = 10=#21c7a8
-
-# Yellow
-# palette = 3=#e3d18a
-# palette = 11=#ecc48d
-
-# Blue
-# palette = 4=#82aaff
-# palette = 12=#82aaff
-
-# Magenta
-# palette = 5=#c792ea
-# palette = 13=#ae81ff
-
-# Cyan
-# palette = 6=#7fdbca
-# palette = 14=#7fdbca
-
-# White
-# palette = 7=#a1aab8
-# palette = 15=#d6deeb
 
 # Cursor
-# cursor-color = #9ca1aa
-# cursor-text = #080808
+cursor-color = #cad3f5
+cursor-text = #191926
 
 # Selection
 # selection-background = #b2ceee

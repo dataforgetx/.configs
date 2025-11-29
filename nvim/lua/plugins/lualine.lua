@@ -4,7 +4,7 @@ return {
     require("lualine").setup({
       options = {
         -- theme = "nightfly",
-        theme = "tokyonight",
+        theme = "catppuccin",
         globalstatus = true, --single status line at bottom instead of per-window
       },
     })
