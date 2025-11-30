@@ -68,6 +68,7 @@ require("lazy").setup({
   require("plugins.neoscroll"),
   require("plugins.oil"),
   require("plugins.auto-session"),
+  require("plugins.markdown-plus"),
 
   -- end of plugins, ui= {} is optional config
 }, {
