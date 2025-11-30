@@ -1,0 +1,4 @@
+~/.zshenv                    # Minimal: sets ZDOTDIR, sources .config/zsh/.zshenv
+~/.config/zsh/.zshenv        # Environment configuration
+~/.config/zsh/.zshrc         # Main zsh configuration
+~/.config/zsh/.zimrc         # ZIM modules

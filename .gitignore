@@ -5,3 +5,9 @@ gtk-2.0/
 iterm2/
 wezterm/
 rstudio/
+
+# ZIM framework - managed separately by ZIM itself
+zsh/.zim/
+
+# Zsh completion cache files (auto-generated)
+zsh/.zcompdump*
