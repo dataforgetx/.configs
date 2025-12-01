@@ -26,7 +26,7 @@ end)
 
 -- automatic marks remap
 vim.keymap.set("n", "..", "`^", { desc = "jump to where you last left insert mode" })
-vim.keymap.set("n", ".,", "`.", { desc = "jump to where you last changed or edited" })
+vim.keymap.set("n", ",,", "`.", { desc = "jump to where you last changed or edited" })
 vim.keymap.set("n", ".;", "`0", { desc = "jump to where you last exited vim" })
 vim.keymap.set("n", "<C-.>", "<C-^>", { desc = "jump to alternate file" })
 
