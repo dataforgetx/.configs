@@ -11,3 +11,5 @@ zsh/.zim/
 
 # Zsh completion cache files (auto-generated)
 zsh/.zcompdump*
+
+zsh/.zsh_history
