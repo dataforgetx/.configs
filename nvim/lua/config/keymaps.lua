@@ -28,7 +28,7 @@ end)
 vim.keymap.set("n", "..", "`^", { desc = "jump to where you last left insert mode" })
 vim.keymap.set("n", ",,", "`.", { desc = "jump to where you last changed or edited" })
 vim.keymap.set("n", ".;", "`0", { desc = "jump to where you last exited vim" })
-vim.keymap.set("n", "<C-.>", "<C-^>", { desc = "jump to alternate file" })
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "jump to alternate file" })
 
 -- location & quickfix
 vim.keymap.set("n", "<leader>cn", ":cnext<CR>", { silent = true, desc = "move to next in the quickfix list" })
