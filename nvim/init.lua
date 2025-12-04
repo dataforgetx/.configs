@@ -2,6 +2,9 @@ require("config.options")
 require("config.keymaps")
 require("config.autocommands")
 
+-- suppress deprecation warnings from plugins
+vim.deprecate = function() end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -68,6 +71,7 @@ require("lazy").setup({
   require("plugins.neoscroll"),
   require("plugins.oil"),
   require("plugins.auto-session"),
+  require("plugins.markdown-plus"),
 
   -- end of plugins, ui= {} is optional config
 }, {

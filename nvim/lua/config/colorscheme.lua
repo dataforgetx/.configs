@@ -14,19 +14,23 @@ return {
       integrations = {
         cmp = true,
         gitsigns = true,
+        mason = true,
+        diffview = true,
+        leap = true,
+        nvim_surround = true,
       },
     })
 
     -- setup must be called before loading
     vim.cmd.colorscheme("catppuccin")
     vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", {
-      bg = "#45475a",
-      fg = "#cdd6f4",
+      bg = "#4a4c61",
+      fg = "#a1b5f7",
     })
 
     vim.api.nvim_set_hl(0, "@markup.raw.block", {
-      bg = "#45475a",
-      fg = "#cdd6f4",
+      bg = "#4a4c61",
+      fg = "#a1b5f7",
     })
   end,
 }

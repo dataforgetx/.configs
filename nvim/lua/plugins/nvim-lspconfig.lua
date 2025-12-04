@@ -249,11 +249,11 @@ return {
         end
 
         -- Navigation
-        map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
+        map("gd", vim.lsp.buf.definition, "Goto Definition")
         map("gD", vim.lsp.buf.declaration, "Goto Declaration")
         map("gr", require("telescope.builtin").lsp_references, "Goto References")
-        map("gI", require("telescope.builtin").lsp_implementations, "Goto Implementation")
-        map("<leader>td", require("telescope.builtin").lsp_type_definitions, "Type Definition")
+        map("gI", vim.lsp.buf.implementation, "Goto Implementation")
+        map("<leader>td", vim.lsp.buf.type_definition, "Type Definition")
         map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
         map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
